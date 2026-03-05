@@ -16,7 +16,7 @@ cloud.connectCloudinary();
 
 // CORS: allow all origins for local testing, but still support credentials (cookies)
 const corsOptions = {
-  origin: true, // reflect the request origin
+  origin: "https://skill-swap-across.vercel.app", // reflect the request origin
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
