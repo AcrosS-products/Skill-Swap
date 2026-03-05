@@ -54,9 +54,10 @@ app.get("/", (req, res) => {
   res.send("Hello e");
 });
 
-// Start server
-const server = app.listen(process.env.PORT, () => {
-   //
+const PORT = process.env.PORT || 4000;
+
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 // Increase timeout to 20 minutes (matching JWT expiration - 20 minutes)
