@@ -1,0 +1,241 @@
+/* Hamburger Button - Always visible at top left */
+.hamburger-btn {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1001;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(236, 72, 153, 0.9));
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.bar {
+  width: 24px;
+  height: 3px;
+  background: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+/* Animation for hamburger toggle */
+.rotate1 {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.fade {
+  opacity: 0;
+}
+.rotate2 {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Overlay to darken background when menu is open */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Navigation Menu - Hidden by default, slides in from left */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(51, 65, 85, 0.98));
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow-y: auto;
+  border-right: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.navbar.open {
+  transform: translateX(0);
+}
+
+/* Custom scrollbar for the menu */
+.navbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.navbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 3px;
+}
+
+.navbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  padding: 100px 0 2rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-links li {
+  width: 100%;
+}
+
+.nav-links a {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  margin: 0 1rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.nav-links a:hover {
+  color: white;
+  transform: translateX(10px);
+}
+
+.nav-links a:hover::before {
+  left: 0;
+}
+
+.active-link {
+  color: white !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.active-link::before {
+  left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .hamburger-btn {
+    top: 1rem;
+    left: 1rem;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+
+  .bar {
+    width: 22px;
+  }
+
+  .navbar {
+    width: 280px;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.875rem 1.5rem;
+    margin: 0 0.75rem;
+  }
+}
+
+/* Animation for menu items */
+.nav-links li {
+  animation: slideInLeft 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.nav-links li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.nav-links li:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.nav-links li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.nav-links li:nth-child(4) {
+  animation-delay: 0.25s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.navbar.open .nav-links li {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+/* Add a logo/title at the top of the menu */
+.nav-links::before {
+  content: 'Skill Swap';
+  display: block;
+  padding: 2rem 2rem 1rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-align: center;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  margin-bottom: 1rem;
+}

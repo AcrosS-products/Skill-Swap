@@ -1,0 +1,157 @@
+/* ============================
+   Dark Mode: Content Section
+   ============================ */
+
+.content-page {
+  background-color: #0d1117; /* dark background */
+  color: #e6edf3; /* light text */
+  min-height: 100vh;
+  margin-top: 7%;
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #f0f6fc;
+  text-align: center;
+  border-bottom: 2px solid #30363d;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.content-tutor {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #8b949e;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.no-content {
+  color: #a3b3c2;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ============================
+   Content Item Cards
+   ============================ */
+
+.content-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.content-item {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.content-item:hover {
+  transform: translateY(-4px);
+  border-color: #58a6ff;
+}
+
+.content-item h3 {
+  font-size: 1.25rem;
+  color: #e6edf3;
+  margin-bottom: 0.5rem;
+}
+
+.content-item p {
+  font-size: 0.95rem;
+  color: #8b949e;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* ============================
+   Video & Link Styles
+   ============================ */
+
+.teach-video,
+.content-item video {
+  width: 100%;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #30363d;
+  background-color: #000;
+}
+
+.content-link {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.content-link:hover {
+  color: #79c0ff;
+  text-decoration: underline;
+}
+
+/* ============================
+   Back Button (optional)
+   ============================ */
+
+.back-btn {
+  background-color: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: #30363d;
+  color: #f0f6fc;
+}
+
+/* ============================
+   Scrollbar (for aesthetic)
+   ============================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+.link-container {
+  display: flex;
+  color: green;
+  justify-content: center;
+}

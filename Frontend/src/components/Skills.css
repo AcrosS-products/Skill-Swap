@@ -1,0 +1,272 @@
+/* Skills.css - Modern Dark Theme */
+body {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #0f1419 100%);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.skills-container {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: 180px;
+}
+
+.skill-section {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+}
+
+.skill-section:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.skill-title {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.tutor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.tutor-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.9));
+  border-radius: 20px;
+  width: 100%;
+  max-width: 220px;
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tutor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.tutor-card:hover::before {
+  transform: scaleX(1);
+}
+
+.tutor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.tutor-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.tutor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tutor-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tutor-info p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+.no-tutors {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  padding: 2rem;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 16px;
+  border: 1px dashed var(--border);
+}
+
+/* Message button styling */
+.message-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.message-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.message-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.message-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.message-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .skills-container {
+    padding: 2rem 1rem;
+    margin-top: 160px;
+  }
+
+  .skill-section {
+    padding: 1.5rem;
+  }
+
+  .tutor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .tutor-img {
+    height: 120px;
+  }
+
+  .skill-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Search bar container at the top of the section */
+.skill-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(51, 65, 85, 0.85));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 14px;
+}
+
+/* Optional: keep the bar always visible while scrolling section content */
+.skill-search.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-secondary, #e5e7eb);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.search-input::placeholder {
+  color: rgba(229, 231, 235, 0.6);
+}
+
+/* Clear (✕) button */
+.clear-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background: rgba(99, 102, 241, 0.15);
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Optional subtle focus ring on the container when input is focused */
+.skill-search:focus-within {
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.35), 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* Result summary line */
+.result-summary {
+  color: var(--text-secondary, #e5e7eb);
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0.75rem 0;
+  opacity: 0.85;
+}
+
+/* Keep your existing .skill-container, .skill-toggle, .btn, .showskill, etc. */
+
