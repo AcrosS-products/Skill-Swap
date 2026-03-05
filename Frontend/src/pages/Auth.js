@@ -3,6 +3,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
 
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://skill-swap-backend-umin.onrender.com";
+
 const Auth = ({ setUser }) => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
