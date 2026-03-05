@@ -28,7 +28,7 @@ function ChatWindow({ tutorId, tutorName }) {
   const fetchMessages = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/auth/messages/conversation/${tutorId}`,
+        `https://skill-swap-backend-umin.onrender.com/auth/messages/conversation/${tutorId}`,
         {
           withCredentials: true,
         }
@@ -47,7 +47,7 @@ function ChatWindow({ tutorId, tutorName }) {
   const markMessagesAsRead = async () => {
     try {
       await axios.patch(
-        `http://localhost:4000/auth/messages/read/${tutorId}`,
+        `https://skill-swap-backend-umin.onrender.com/auth/messages/read/${tutorId}`,
         {},
         {
           withCredentials: true,
@@ -68,7 +68,7 @@ function ChatWindow({ tutorId, tutorName }) {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/auth/messages/send",
+        "https://skill-swap-backend-umin.onrender.com/auth/messages/send",
         {
           receiverId: tutorId,
           content: newMessage,

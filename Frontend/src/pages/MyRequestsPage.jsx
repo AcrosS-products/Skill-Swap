@@ -21,11 +21,11 @@ const MyRequestsPage = () => {
     setLoading(true);
     try {
       const [raisedRes, receivedRes] = await Promise.all([
-        axios.get("http://localhost:4000/auth/requests/learner", {
+        axios.get("https://skill-swap-backend-umin.onrender.com/auth/requests/learner", {
           withCredentials: true,
           params: { status: filter === "all" ? undefined : filter },
         }),
-        axios.get("http://localhost:4000/auth/requests/tutor", {
+        axios.get("https://skill-swap-backend-umin.onrender.com/auth/requests/tutor", {
           withCredentials: true,
           params: { status: filter === "all" ? undefined : filter },
         }),
@@ -46,7 +46,7 @@ const MyRequestsPage = () => {
 
     try {
       await axios.patch(
-        `http://localhost:4000/auth/requests/${requestId}/cancel`,
+        `https://skill-swap-backend-umin.onrender.com/auth/requests/${requestId}/cancel`,
         {},
         {
           withCredentials: true,
@@ -62,7 +62,7 @@ const MyRequestsPage = () => {
   const handleAccept = async (requestId) => {
     try {
       await axios.patch(
-        `http://localhost:4000/auth/requests/${requestId}/accept`,
+        `https://skill-swap-backend-umin.onrender.com/auth/requests/${requestId}/accept`,
         {},
         {
           withCredentials: true,
@@ -82,7 +82,7 @@ const MyRequestsPage = () => {
 
     try {
       await axios.patch(
-        `http://localhost:4000/auth/requests/${requestId}/reject`,
+        `https://skill-swap-backend-umin.onrender.com/auth/requests/${requestId}/reject`,
         {},
         {
           withCredentials: true,

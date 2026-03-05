@@ -18,7 +18,7 @@ const LearningSessionsPage = () => {
   const fetchSessions = async () => {
     try {
       const params = filter !== "all" ? { status: filter } : {};
-      const res = await axios.get("http://localhost:4000/auth/sessions", {
+      const res = await axios.get("https://skill-swap-backend-umin.onrender.com/auth/sessions", {
         withCredentials: true,
         params,
       });
@@ -34,7 +34,7 @@ const LearningSessionsPage = () => {
   const handleStartSession = async (sessionId) => {
     try {
       await axios.patch(
-        `http://localhost:4000/auth/sessions/${sessionId}`,
+        `https://skill-swap-backend-umin.onrender.com/auth/sessions/${sessionId}`,
         { status: "active" },
         {
           withCredentials: true,
@@ -50,7 +50,7 @@ const LearningSessionsPage = () => {
   const handleCompleteSession = async (sessionId) => {
     try {
       await axios.patch(
-        `http://localhost:4000/auth/sessions/${sessionId}`,
+        `https://skill-swap-backend-umin.onrender.com/auth/sessions/${sessionId}`,
         { status: "completed" },
         {
           withCredentials: true,

@@ -26,7 +26,7 @@ function MessagesPage() {
   const fetchTutorName = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/auth/tutorname/${tutorId}`,
+        `https://skill-swap-backend-umin.onrender.com/auth/tutorname/${tutorId}`,
         {
           withCredentials: true,
         }

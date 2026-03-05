@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
 
-const API_BASE_URL = "http://localhost:4000";
+const API_BASE_URL = "https://skill-swap-backend-umin.onrender.com";
 
 const Auth = ({ setUser }) => {
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ const Auth = ({ setUser }) => {
       console.error("Login error:", err);
 
       if (err.message.includes("Failed to fetch") || err.message.includes("NetworkError")) {
-        toast.error("Cannot connect to server. Make sure backend is running on port 4000!");
+        toast.error("Cannot connect to server. Make sure backend is running on port !");
       } else {
         toast.error(err.message || "Something went wrong during login!");
       }

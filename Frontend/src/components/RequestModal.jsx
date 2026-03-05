@@ -15,7 +15,7 @@ const RequestModal = ({ tutorId, tutorName, skillName, onClose, onSuccess }) => 
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/auth/requests",
+        "https://skill-swap-backend-umin.onrender.com/auth/requests",
         {
           tutorId,
           skill: skillName,

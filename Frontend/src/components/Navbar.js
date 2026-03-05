@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import "./Navbar.css";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://skill-swap-backend-umin.onrender.com/";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

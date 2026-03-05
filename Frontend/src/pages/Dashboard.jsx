@@ -25,7 +25,7 @@ const Dashboard = ({ user, setUser }) => {
 
   const fetchUserSkills = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/auth/user/skills", {
+      const res = await axios.get("https://skill-swap-backend-umin.onrender.com/auth/user/skills", {
         withCredentials: true,
       });
       setTeachingSkills(res.data.skills || []);
@@ -54,7 +54,7 @@ const Dashboard = ({ user, setUser }) => {
     }
 
     try {
-      const res = await fetch(`http://localhost:4000/auth/add-skill/${userId}`, {
+      const res = await fetch(`https://skill-swap-backend-umin.onrender.com/auth/add-skill/${userId}`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json"
@@ -80,7 +80,7 @@ const Dashboard = ({ user, setUser }) => {
 
   const handleRemoveSkill = async (skill) => {
     try {
-      const res = await axios.delete("http://localhost:4000/auth/user/skill", {
+      const res = await axios.delete("https://skill-swap-backend-umin.onrender.com/auth/user/skill", {
         withCredentials: true,
         data: { skill },
       });

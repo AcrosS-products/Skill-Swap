@@ -59,7 +59,7 @@ const SkillSet = () => {
         setError(null);
 
         const result = await fetchJSON(
-          "http://localhost:4000/auth/learn",
+          "https://skill-swap-backend-umin.onrender.com/auth/learn",
           {
             method: "GET",
             headers: { Accept: "application/json" },
@@ -97,7 +97,7 @@ const SkillSet = () => {
         setTeachError(null);
 
         const json = await fetchJSON(
-          `http://localhost:4000/auth/teach/my-content/${localStorage.getItem("userId")}`,
+          `https://skill-swap-backend-umin.onrender.com/auth/teach/my-content/${localStorage.getItem("userId")}`,
           {
             method: "GET",
             credentials: "include",
@@ -136,7 +136,7 @@ const SkillSet = () => {
       setTeachError(null);
 
       const json = await fetchJSON(
-        "http://localhost:4000/auth/teach/my-content/:", // /teach/my-content/:tutorId
+        "https://skill-swap-backend-umin.onrender.com/auth/teach/my-content/:", // /teach/my-content/:tutorId
         {
           method: "GET",
           credentials: "include",

@@ -16,7 +16,7 @@ const UserProfile = () => {
     const fetchUserProfile = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/auth/user/${userId}`,
+          `https://skill-swap-backend-umin.onrender.com/auth/user/${userId}`,
           { withCredentials: true }
         );
         setUser(res.data.user);

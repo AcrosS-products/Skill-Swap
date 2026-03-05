@@ -19,7 +19,7 @@ const ContentSection = () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:4000/auth/teach/my-content/${tutorId}`,
+          `https://skill-swap-backend-umin.onrender.com/auth/teach/my-content/${tutorId}`,
           {
             withCredentials: true,
           }

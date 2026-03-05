@@ -26,7 +26,7 @@ const ConversationsPage = () => {
 
   const fetchConversations = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/auth/messages/conversations", {
+      const res = await axios.get("https://skill-swap-backend-umin.onrender.com/auth/messages/conversations", {
         withCredentials: true,
       });
       setConversations(res.data.conversations || []);
@@ -45,7 +45,7 @@ const ConversationsPage = () => {
 
   const fetchUnreadCount = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/auth/messages/unread-count", {
+      const res = await axios.get("https://skill-swap-backend-umin.onrender.com/auth/messages/unread-count", {
         withCredentials: true,
       });
       setUnreadCount(res.data.unreadCount || 0);

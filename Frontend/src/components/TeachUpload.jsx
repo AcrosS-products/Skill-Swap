@@ -30,7 +30,7 @@ export default function TeachUpload({ onUploaded }) {
     setSubmitting(true);
     setError("");
     try {
-      const res = await fetch("http://localhost:4000/auth/fileUpload", {
+      const res = await fetch("https://skill-swap-backend-umin.onrender.com/auth/fileUpload", {
         method: "POST",
         credentials: "include",
         body: fd,
@@ -58,7 +58,7 @@ export default function TeachUpload({ onUploaded }) {
     setSubmitting(true);
     setError("");
     try {
-      const res = await fetch("http://localhost:4000/auth/teach/link", {
+      const res = await fetch("https://skill-swap-backend-umin.onrender.com/auth/teach/link", {
         method: "POST",
         credentials: "include",
         body: fd,
