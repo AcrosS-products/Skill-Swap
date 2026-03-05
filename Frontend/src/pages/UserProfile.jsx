@@ -13,22 +13,23 @@ const UserProfile = () => {
   const currentUserId = localStorage.getItem("userId");
 
   useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/auth/user/${userId}`,
+          { withCredentials: true }
+        );
+        setUser(res.data.user);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching profile:", err);
+        toast.error("Failed to load profile");
+        setLoading(false);
+      }
+    };
+
     fetchUserProfile();
   }, [userId]);
-
-  const fetchUserProfile = async () => {
-    try {
-      const res = await axios.get(`http://localhost:4000/auth/user/${userId}`, {
-        withCredentials: true,
-      });
-      setUser(res.data.user);
-      setLoading(false);
-    } catch (err) {
-      console.error("Error fetching profile:", err);
-      toast.error("Failed to load profile");
-      setLoading(false);
-    }
-  };
 
   const handleMessage = () => {
     navigate(`/messages/${userId}`);
@@ -53,7 +54,7 @@ const UserProfile = () => {
   return (
     <div className="profile-page">
       <ToastContainer position="top-right" autoClose={3000} />
-      
+
       <button className="back-button" onClick={() => navigate(-1)}>
         ← Back
       </button>
@@ -96,4 +97,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
