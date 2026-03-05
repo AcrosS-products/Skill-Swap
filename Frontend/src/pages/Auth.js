@@ -1,30 +1,42 @@
+
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
-  "https://skill-swap-backend-umin.onrender.com";
+  process.env.REACT_APP_API_BASE_URL || "https://skill-swap-backend-umin.onrender.com";
 
 const Auth = ({ setUser }) => {
   const navigate = useNavigate();
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
   const [signupData, setSignupData] = useState({
     name: "",
     email: "",
     password: "",
     role: "learner",
   });
+
   const [loginLoading, setLoginLoading] = useState(false);
   const [signupLoading, setSignupLoading] = useState(false);
 
   const handleLoginChange = (e) => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSignupChange = (e) => {
-    setSignupData({ ...signupData, [e.target.name]: e.target.value });
+    setSignupData({
+      ...signupData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleLoginSubmit = async (e) => {
@@ -34,48 +46,33 @@ const Auth = ({ setUser }) => {
     try {
       const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include", // allow cookies
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: JSON.stringify(loginData),
       });
 
-      let data;
-      const contentType = res.headers.get("content-type");
-
-      if (contentType && contentType.includes("application/json")) {
-        data = await res.json();
-      } else {
-        const text = await res.text();
-        throw new Error(`Server error: ${text || res.statusText}`);
-      }
+      const data = await res.json();
 
       if (res.ok) {
         toast.success("Login successful!");
 
-        // Store user info only (NOT token)
         if (data.user) {
           localStorage.setItem("userId", data.user._id);
           localStorage.setItem("userName", data.user.name);
           localStorage.setItem("userEmail", data.user.email);
         }
 
-        console.log("Login successful");
-
         setUser(data.user);
         navigate("/dashboard");
       } else {
-        toast.error(data.message || `Login failed: ${res.status} ${res.statusText}`);
+        toast.error(data.message || "Login failed");
       }
 
     } catch (err) {
       console.error("Login error:", err);
-
-      if (err.message.includes("Failed to fetch") || err.message.includes("NetworkError")) {
-        toast.error("Cannot connect to server. Please check your internet or backend URL.");
-      } else {
-        toast.error(err.message || "Something went wrong during login!");
-      }
-
+      toast.error("Cannot connect to server. Please check backend.");
     } finally {
       setLoginLoading(false);
     }
@@ -88,19 +85,13 @@ const Auth = ({ setUser }) => {
     try {
       const res = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(signupData),
       });
 
-      let data;
-      const contentType = res.headers.get("content-type");
-
-      if (contentType && contentType.includes("application/json")) {
-        data = await res.json();
-      } else {
-        const text = await res.text();
-        throw new Error(`Server error: ${text || res.statusText}`);
-      }
+      const data = await res.json();
 
       if (res.ok) {
         toast.success("Sign-Up successful! Please login.");
@@ -111,22 +102,13 @@ const Auth = ({ setUser }) => {
           password: "",
           role: "learner",
         });
-
       } else {
-        toast.error(data.message || `Sign-Up failed: ${res.status} ${res.statusText}`);
+        toast.error(data.message || "Signup failed");
       }
-
-      console.log("Response from backend:", data);
 
     } catch (err) {
       console.error("Signup error:", err);
-
-      if (err.message.includes("Failed to fetch") || err.message.includes("NetworkError")) {
-        toast.error("Cannot connect to server. Please check your internet or backend URL.");
-      } else {
-        toast.error(err.message || "Something went wrong during signup!");
-      }
-
+      toast.error("Cannot connect to server. Please check backend.");
     } finally {
       setSignupLoading(false);
     }
@@ -134,7 +116,6 @@ const Auth = ({ setUser }) => {
 
   return (
     <div className="auth-container">
-
       <ToastContainer position="top-right" autoClose={3000} />
 
       {/* Login */}
@@ -163,22 +144,6 @@ const Auth = ({ setUser }) => {
           <button type="submit" disabled={loginLoading}>
             {loginLoading ? "Logging in..." : "Login"}
           </button>
-
-          <p className="auth-footer-text">
-            New to Skill Swap?{" "}
-            <span
-              className="auth-link"
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                window.scrollTo({
-                  top: document.querySelector('.auth-box:last-child').offsetTop - 100,
-                  behavior: 'smooth'
-                })
-              }
-            >
-              Sign up
-            </span>
-          </p>
         </form>
       </div>
 
@@ -218,27 +183,11 @@ const Auth = ({ setUser }) => {
           <button type="submit" disabled={signupLoading}>
             {signupLoading ? "Signing up..." : "Sign Up"}
           </button>
-
-          <p className="auth-footer-text">
-            Already have an account?{" "}
-            <span
-              className="auth-link"
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                window.scrollTo({
-                  top: document.querySelector('.auth-box.login').offsetTop - 100,
-                  behavior: 'smooth'
-                })
-              }
-            >
-              Login
-            </span>
-          </p>
         </form>
       </div>
-
     </div>
   );
 };
 
 export default Auth;
+
