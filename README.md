@@ -1,21 +1,8 @@
 # &nbsp;													  SKILLSWAP 
 
-# &nbsp;            		     OOPS Project group - 15
 
 
-
-#### &nbsp;	Arnav Sharma 24CSB0B08
-
-#### &nbsp;	Kanishk Mallick 24CSB0B31
-
-#### &nbsp;	Miryala Avas 24CSB0B45
-
-#### &nbsp;	Nandan Kumar Saw 24CSB0B48
-
-#### &nbsp;	Shreyas Prakash Lohia 24CSB0B70
-
-#### &nbsp;	Snigdha Parasa 24CSB0B73
-
+#### &nbsp;	Arnav Sharma 
 
 
 
