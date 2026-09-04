@@ -8,7 +8,7 @@
 
 
 #### &nbsp;~ A PLATFORM WHERE SKILL SEEKERS AND SKILL PROVIDERS MEET
-#### &nbsp;~ https://skill-swap-across.vercel.app/ It is live on internet 
+#### &nbsp;~ https://skill-swap-across.vercel.app/ It is live on internet (the version is not up to date)
 
 
 
